@@ -26,6 +26,7 @@ func set_right(value:bool):
 	
 	r.visible = !value
 	pr.disabled = !value
+	pr.get_parent().visible = value
 
 func set_left(value:bool):
 	left = value
@@ -34,6 +35,7 @@ func set_left(value:bool):
 	
 	l.visible = !value
 	pl.disabled = !value
+	pl.get_parent().visible = value
 
 func set_top(value:bool):
 	top = value
@@ -42,6 +44,7 @@ func set_top(value:bool):
 	
 	t.visible = !value
 	pt.disabled = !value
+	pt.get_parent().visible = value
 
 func set_bottom(value:bool):
 	bottom = value
@@ -50,6 +53,7 @@ func set_bottom(value:bool):
 	
 	b.visible = !value
 	pb.disabled = !value
+	pb.get_parent().visible = value
 
 func init(t, r, b, l):
 	self.top = t
