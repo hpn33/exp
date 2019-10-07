@@ -8,15 +8,25 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "N",
+"language": "GDScript",
+"path": "res://scene/Main.gd"
+} ]
 _global_script_class_icons={
-
+"N": ""
 }
 
 [application]
 
 config/name="level_generator_002"
+run/main_scene="res://scene/Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+auto="*res://autoload/auto.gd"
 
 [rendering]
 
