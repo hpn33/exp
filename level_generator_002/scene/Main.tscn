@@ -15,4 +15,3 @@ scale = Vector2( 50, 50 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 1, 1 )
 format = 1
-
