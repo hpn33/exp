@@ -1,17 +1,33 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scene/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/bw.tres" type="TileSet" id=2]
+[ext_resource path="res://scene/map_maker.gd" type="Script" id=3]
+[ext_resource path="res://scene/map_rendered.gd" type="Script" id=4]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [  ],
-"_edit_vertical_guides_": [  ]
-}
+
+[node name="board_maker" type="Node2D" parent="."]
+pause_mode = 1
+script = ExtResource( 3 )
+
+[node name="map_render" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="background" type="TileMap" parent="."]
+format = 1
+
+[node name="walls" type="TileMap" parent="."]
+format = 1
 
 [node name="path" type="TileMap" parent="."]
 scale = Vector2( 50, 50 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 1, 1 )
 format = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 2567.57, 1501.63 )
+current = true
+zoom = Vector2( 5, 5 )
