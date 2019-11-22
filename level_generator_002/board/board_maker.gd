@@ -10,6 +10,7 @@ func create(origin = randi() % 2):
 	
 	board = get_parent()
 	
+	
 	if origin == 0:
 		create_path_width()
 	else:
@@ -19,7 +20,10 @@ func create(origin = randi() % 2):
 	
 
 func create_board():
+	
 	board.board.clear()
+	board.way.clear()
+	
 	# set board
 	for x in cols:
 		var xa = []
@@ -51,11 +55,10 @@ func create_path_width():
 	
 	create_board()
 	
-	print(board.first, ' ', get_parent().first)
 	board.first = Vector2(randi() % cols, 0)
-	print(board.first, ' ', get_parent().first)
 	set_to_board(board.first, 1)
 	pos = board.first
+	board.way.append(pos)
 	
 	var end = 0
 	while end < rows-1:
@@ -73,6 +76,7 @@ func create_path_width():
 				end+=1
 		
 		set_to_board(pos, 1)
+		board.way.append(pos)
 	
 	board.last = pos
 
@@ -85,6 +89,7 @@ func create_path_height():
 	board.first = Vector2(0, randi() % rows)
 	set_to_board(board.first, 1)
 	pos = board.first
+	board.way.append(pos)
 	
 	var end = 0
 	while end < cols-1:
@@ -102,6 +107,7 @@ func create_path_height():
 				end+=1
 		
 		set_to_board(pos, 1)
+		board.way.append(pos)
 	
 	board.last = pos
 

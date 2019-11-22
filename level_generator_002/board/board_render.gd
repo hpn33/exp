@@ -5,12 +5,15 @@ extends Node
 var board: Board
 
 var maps: Map
+var way_line : Line2D
+
 
 
 var room_loader = preload("res://board/Room.tscn")
 
 func _ready() -> void:
 	maps = load("res://scene/map.tscn").instance()
+	way_line = Line2D.new()
 
 
 func render():
@@ -43,8 +46,12 @@ func build(target:Node= get_node(get_parent().target)):
 					new.modulate = Color.green
 				elif board.last == Vector2(x, y):
 					new.modulate = Color.red
-				
 	
+	# show the ways
+	for way in board.way:
+		way_line.add_point((way*600)+Vector2(300,300))
+	
+	target.add_child(way_line)
 	
 	pass
 

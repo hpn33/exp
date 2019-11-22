@@ -7,6 +7,7 @@ onready var board_maker := $maker
 onready var board_render := $render
 
 var board := []
+var way := []
 
 var first := Vector2()
 var last := Vector2()
