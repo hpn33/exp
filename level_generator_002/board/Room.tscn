@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/sprite/dot.png" type="Texture" id=1]
-[ext_resource path="res://blocks/Room.gd" type="Script" id=2]
+[ext_resource path="res://board/Room.gd" type="Script" id=2]
 
 [node name="Room" type="Node2D"]
 script = ExtResource( 2 )

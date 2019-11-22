@@ -1,42 +1,42 @@
-class_name Board extends Node2D
-
-export var width := 5
-export var height := 5
+class_name BoardMaker extends Node
 
 var cols := 0
 var rows := 0
 var pos := Vector2()
-var first := Vector2()
-var last := Vector2()
 
-var board := []
-var size := Vector2()
+var board: Board
 
-func create_path(origin = randi() % 2):
+func create(origin = randi() % 2):
+	
+	board = get_parent()
 	
 	if origin == 0:
 		create_path_width()
 	else:
 		create_path_height()
 	
+#	return board
+	
 
 func create_board():
+	board.board.clear()
 	# set board
 	for x in cols:
 		var xa = []
 		for y in rows:
 			xa.append(0)
-		board.append(xa)
-	
-#	print(board)
+		board.board.append(xa)
+
 
 func set_to_board(pos, new):
-	for x_index in board.size():
-		var xa = board[x_index]
+	for x_index in board.board.size():
+		
+		var xa = board.board[x_index]
 		if x_index == pos.x:
+			
 			for y_index in xa.size():
 				if y_index == pos.y:
-					board[x_index][y_index] = new
+					board.board[x_index][y_index] = new
 	
 	# debug
 #	for x in board:
@@ -46,14 +46,16 @@ func set_to_board(pos, new):
 
 
 func create_path_width():
-	cols = width
-	rows = height
+	cols = get_parent().size.x
+	rows = get_parent().size.y
 	
 	create_board()
 	
-	first = Vector2(randi() % cols, 0)
-	set_to_board(first, 1)
-	pos = first
+	print(board.first, ' ', get_parent().first)
+	board.first = Vector2(randi() % cols, 0)
+	print(board.first, ' ', get_parent().first)
+	set_to_board(board.first, 1)
+	pos = board.first
 	
 	var end = 0
 	while end < rows-1:
@@ -72,17 +74,17 @@ func create_path_width():
 		
 		set_to_board(pos, 1)
 	
-	last = pos
+	board.last = pos
 
 func create_path_height():
-	cols = height
-	rows = width
+	cols = get_parent().size.y
+	rows = get_parent().size.x
 	
 	create_board()
 	
-	first = Vector2(0, randi() % rows)
-	set_to_board(first, 1)
-	pos = first
+	board.first = Vector2(0, randi() % rows)
+	set_to_board(board.first, 1)
+	pos = board.first
 	
 	var end = 0
 	while end < cols-1:
@@ -101,14 +103,13 @@ func create_path_height():
 		
 		set_to_board(pos, 1)
 	
-	last = pos
+	board.last = pos
 
 
 func draw_board(tilemap: TileMap):
 	
-	for x in board.size():
-		for y in board[x].size():
-			tilemap.set_cellv(Vector2(x, y), board[x][y])
+	for x in board.board.size():
+		for y in board.board[x].size():
+			tilemap.set_cellv(Vector2(x, y), board.board[x][y])
 #			if board[x][y] == 1:
-	
-	pass
+

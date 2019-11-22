@@ -12,33 +12,33 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Board",
 "language": "GDScript",
-"path": "res://scene/map_maker.gd"
+"path": "res://board/board.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
+"class": "BoardMaker",
+"language": "GDScript",
+"path": "res://board/board_maker.gd"
+}, {
+"base": "Node",
 "class": "BoardRender",
 "language": "GDScript",
-"path": "res://scene/map_rendered.gd"
+"path": "res://board/board_render.gd"
 }, {
 "base": "Node2D",
 "class": "Map",
 "language": "GDScript",
 "path": "res://scene/map.gd"
 }, {
-"base": "Node",
-"class": "N",
-"language": "GDScript",
-"path": "res://scene/Main.gd"
-}, {
 "base": "Node2D",
 "class": "Room",
 "language": "GDScript",
-"path": "res://blocks/Room.gd"
+"path": "res://board/Room.gd"
 } ]
 _global_script_class_icons={
 "Board": "",
+"BoardMaker": "",
 "BoardRender": "",
 "Map": "",
-"N": "",
 "Room": ""
 }
 

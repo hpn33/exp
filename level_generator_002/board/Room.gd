@@ -16,8 +16,8 @@ func set_door(doors: Array):
 		return
 	
 	show_label(doors)
-	for d in doors:
-		print(d, ': ', bool(d))
+#	for d in doors:
+#		print(d, ': ', bool(d))
 	
 	right.visible = !bool(doors[0])
 	down.visible = !bool(doors[1])
