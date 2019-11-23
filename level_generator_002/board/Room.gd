@@ -6,24 +6,55 @@ onready var down = $"down/door"
 onready var right = $"right/door"
 onready var left = $"left/door"
 
+var doors = {
+	right = false,
+	down = false,
+	left = false,
+	up = false
+}
 
-#func _init(doors:= []) -> void:
-#	set_door(doors)
+var pos := Vector2() setget set_pos
+var active := false setget set_active
+const size := 600
+var t:= ''
 
-func set_door(doors: Array):
+func set_doors():
 	
-	if doors.size() == 0:
-		return
+	yield(self, "ready")
+#	show_label(doors)
+	$Label.text = t
 	
-	show_label(doors)
-#	for d in doors:
-#		print(d, ': ', bool(d))
+	right.visible = !doors.right
+	down.visible = !doors.down
+	left.visible = !doors.left
+	up.visible = !doors.up
+
+
+func set_door(direction: Vector2, toggle:= true):
+	t += str(direction) + '\n'
+	match direction:
+		Vector2.RIGHT:
+			doors.right = toggle
+		Vector2.DOWN:
+			doors.down = toggle
+		Vector2.LEFT:
+			doors.left = toggle
+		Vector2.UP:
+			doors.up = toggle
 	
-	right.visible = !bool(doors[0])
-	down.visible = !bool(doors[1])
-	left.visible = !bool(doors[2])
-	up.visible = !bool(doors[3])
+	set_doors()
 
 
 func show_label(doors):
-	$Label.text = str(doors)
+	$Label.text = str(doors.values())
+
+
+func set_active(value: bool) -> void:
+	active = value
+	modulate = Color.white if active else Color.black
+
+func set_pos(value: Vector2):
+	
+	pos = value
+	position = pos * (Vector2.ONE * size)
+

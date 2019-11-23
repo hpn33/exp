@@ -5,66 +5,109 @@ extends Node
 var board: Board
 
 var maps: Map
-var way_line : Line2D
+var path_line : Line2D
 
 
 
-var room_loader = preload("res://board/Room.tscn")
 
 func _ready() -> void:
 	maps = load("res://scene/map.tscn").instance()
-	way_line = Line2D.new()
+	path_line = Line2D.new()
 
+
+#func _process(delta: float) -> void:
+#	print(name)
 
 func render():
 	board = get_parent()
 	
-	build()
+	var target:Node= get_node(board.target)
+	
+	optimize_path()
+	open_doors_in_path()
+	
+	draw_board(target)
+	draw_line(target)
 
 
-func build(target:Node= get_node(get_parent().target)):
+func draw_board(target:Node):
+	
+	
 	var size = Vector2.ONE * 600
 	
 	for x in board.board.size():
 		for y in board.board[x].size():
+			
 			var cell = board.board[x][y]
-			var new = room_loader.instance()
-			if cell == 0:
-				target.add_child(new)
-				new.modulate = Color.black
-				new.position = size * Vector2(x, y)
-			else:
-				
-				var doors = check_config(Vector2(x, y))
-#				print(doors)
-				
-				target.add_child(new)
-				new.set_door(doors)
-				new.position = size * Vector2(x, y)
-				
-				if board.first == Vector2(x, y):
-					new.modulate = Color.green
-				elif board.last == Vector2(x, y):
-					new.modulate = Color.red
+			
+			target.add_child(cell)
+			
+			if board.first == Vector2(x, y):
+				cell.modulate = Color.green
+			elif board.last == Vector2(x, y):
+				cell.modulate = Color.red
 	
-	# show the ways
-	for way in board.way:
-		way_line.add_point((way*600)+Vector2(300,300))
 	
-	target.add_child(way_line)
+#
+#	for i in board.path.size():
+#
+
+func optimize_path():
 	
-	pass
+	var new_path := []
+	
+	new_path.append(board.path[0])
+	for p in board.path:
+		if new_path[new_path.size() - 1] != p:
+			new_path.append(p)
+	
+	board.path = new_path
+
+func open_doors_in_path():
+	
+	for index in board.path.size():
+		var p_path: Vector2
+		var c_path: Vector2
+		var n_path: Vector2
+		
+		c_path = board.path[index]
+		
+		if index -1 >= 0:
+			p_path = board.path[index-1]
+		else:
+			p_path = c_path
+		
+		if index+1 <= board.path.size()-1:
+			n_path = board.path[index+1]
+		else:
+			n_path = c_path
+		
+		var cell = get_cellv(board.path[index])
+		
+		cell.set_door(p_path - c_path)
+		cell.set_door(n_path - c_path)
+#		print('------')
+		
+
+
+func draw_line(target):
+	# show the paths
+	for path in board.path:
+		path_line.add_point((path*600)+Vector2(300,300))
+	
+	target.add_child(path_line)
+
 
 # TODO: go to new class
-func get_paths() -> Array:
-	var paths := []
-	
-	for x in board.size():
-		for y in board[x].size():
-			if board[x][y] == 1:
-				paths.append(Vector2(x, y))
-	
-	return paths
+#func get_paths() -> Array:
+#	var paths := []
+#
+#	for x in board.size():
+#		for y in board[x].size():
+#			if board[x][y] == 1:
+#				paths.append(Vector2(x, y))
+#
+#	return paths
 
 
 # TODO: go to new class
@@ -78,10 +121,12 @@ func get_cellv(pos: Vector2):
 	return board.board[pos.x][pos.y]
 
 
-func check_config(pos) -> Array:
-	var name := [0, 0, 0, 0]
-	name[0] = int(get_cellv(pos + Vector2.RIGHT) == 1)
-	name[1] = int(get_cellv(pos + Vector2.DOWN) == 1)
-	name[2] = int(get_cellv(pos + Vector2.LEFT) == 1)
-	name[3] = int(get_cellv(pos + Vector2.UP) == 1)
-	return name
+#func check_config(pos) -> Array:
+#	var name := [0, 0, 0, 0]
+#	name[0] = int(get_cellv(pos + Vector2.RIGHT) == 1)
+#	name[1] = int(get_cellv(pos + Vector2.DOWN) == 1)
+#	name[2] = int(get_cellv(pos + Vector2.LEFT) == 1)
+#	name[3] = int(get_cellv(pos + Vector2.UP) == 1)
+#	return name
+
+
