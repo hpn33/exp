@@ -10,189 +10,11 @@ extents = Vector2( 1, 1 )
 [node name="p-n" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="corner" type="Node2D" parent="."]
-editor/display_folded = true
-
-[node name="bl" type="Sprite" parent="corner"]
-position = Vector2( -4.5, 4.5 )
-texture = ExtResource( 2 )
-
-[node name="br" type="Sprite" parent="corner"]
-position = Vector2( 4.5, 4.5 )
-texture = ExtResource( 2 )
-
-[node name="tl" type="Sprite" parent="corner"]
-position = Vector2( -4.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="tr" type="Sprite" parent="corner"]
-position = Vector2( 4.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="filler" type="Node2D" parent="."]
-editor/display_folded = true
-
-[node name="r" type="Node2D" parent="filler"]
-editor/display_folded = true
-
-[node name="p" type="Sprite" parent="filler/r"]
-position = Vector2( 4.5, -3.5 )
-texture = ExtResource( 2 )
-
-[node name="p2" type="Sprite" parent="filler/r"]
-position = Vector2( 4.5, -2.5 )
-texture = ExtResource( 2 )
-
-[node name="p3" type="Sprite" parent="filler/r"]
-position = Vector2( 4.5, -1.5 )
-texture = ExtResource( 2 )
-
-[node name="p4" type="Sprite" parent="filler/r"]
-position = Vector2( 4.5, 3.5 )
-texture = ExtResource( 2 )
-
-[node name="p5" type="Sprite" parent="filler/r"]
-position = Vector2( 4.5, 2.5 )
-texture = ExtResource( 2 )
-
-[node name="p6" type="Sprite" parent="filler/r"]
-position = Vector2( 4.5, 1.5 )
-texture = ExtResource( 2 )
-
-[node name="t" type="Node2D" parent="filler"]
-editor/display_folded = true
-
-[node name="p" type="Sprite" parent="filler/t"]
-position = Vector2( 3.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="p2" type="Sprite" parent="filler/t"]
-position = Vector2( 2.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="p3" type="Sprite" parent="filler/t"]
-position = Vector2( 1.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="p4" type="Sprite" parent="filler/t"]
-position = Vector2( -1.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="p5" type="Sprite" parent="filler/t"]
-position = Vector2( -2.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="p6" type="Sprite" parent="filler/t"]
-position = Vector2( -3.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="l" type="Node2D" parent="filler"]
-editor/display_folded = true
-
-[node name="p" type="Sprite" parent="filler/l"]
-position = Vector2( -4.5, -3.5 )
-texture = ExtResource( 2 )
-
-[node name="p2" type="Sprite" parent="filler/l"]
-position = Vector2( -4.5, -2.5 )
-texture = ExtResource( 2 )
-
-[node name="p3" type="Sprite" parent="filler/l"]
-position = Vector2( -4.5, -1.5 )
-texture = ExtResource( 2 )
-
-[node name="p4" type="Sprite" parent="filler/l"]
-position = Vector2( -4.5, 1.5 )
-texture = ExtResource( 2 )
-
-[node name="p5" type="Sprite" parent="filler/l"]
-position = Vector2( -4.5, 2.5 )
-texture = ExtResource( 2 )
-
-[node name="p6" type="Sprite" parent="filler/l"]
-position = Vector2( -4.5, 3.5 )
-texture = ExtResource( 2 )
-
-[node name="b" type="Node2D" parent="filler"]
-editor/display_folded = true
-
-[node name="p" type="Sprite" parent="filler/b"]
-position = Vector2( 3.5, 4.5 )
-texture = ExtResource( 2 )
-
-[node name="p2" type="Sprite" parent="filler/b"]
-position = Vector2( 2.5, 4.5 )
-texture = ExtResource( 2 )
-
-[node name="p3" type="Sprite" parent="filler/b"]
-position = Vector2( 1.5, 4.5 )
-texture = ExtResource( 2 )
-
-[node name="p4" type="Sprite" parent="filler/b"]
-position = Vector2( -1.5, 4.5 )
-texture = ExtResource( 2 )
-
-[node name="p5" type="Sprite" parent="filler/b"]
-position = Vector2( -2.5, 4.5 )
-texture = ExtResource( 2 )
-
-[node name="p6" type="Sprite" parent="filler/b"]
-position = Vector2( -3.5, 4.5 )
-texture = ExtResource( 2 )
-
-[node name="door" type="Node2D" parent="."]
-modulate = Color( 0.807843, 0.807843, 0.807843, 1 )
-
-[node name="r" type="Node2D" parent="door"]
-editor/display_folded = true
-
-[node name="p" type="Sprite" parent="door/r"]
-position = Vector2( 4.5, -0.5 )
-texture = ExtResource( 2 )
-
-[node name="p2" type="Sprite" parent="door/r"]
-position = Vector2( 4.5, 0.5 )
-texture = ExtResource( 2 )
-
-[node name="l" type="Node2D" parent="door"]
-editor/display_folded = true
-
-[node name="p" type="Sprite" parent="door/l"]
-position = Vector2( -4.5, -0.5 )
-texture = ExtResource( 2 )
-
-[node name="p2" type="Sprite" parent="door/l"]
-position = Vector2( -4.5, 0.5 )
-texture = ExtResource( 2 )
-
-[node name="t" type="Node2D" parent="door"]
-editor/display_folded = true
-
-[node name="p" type="Sprite" parent="door/t"]
-position = Vector2( -0.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="p2" type="Sprite" parent="door/t"]
-position = Vector2( 0.5, -4.5 )
-texture = ExtResource( 2 )
-
-[node name="b" type="Node2D" parent="door"]
-editor/display_folded = true
-
-[node name="p" type="Sprite" parent="door/b"]
-position = Vector2( -0.5, 4.5 )
-texture = ExtResource( 2 )
-
-[node name="p2" type="Sprite" parent="door/b"]
-position = Vector2( 0.5, 4.5 )
-texture = ExtResource( 2 )
-
 [node name="point" type="Node2D" parent="."]
 
 [node name="t" type="Area2D" parent="point" groups=[
 "spawn_point",
 ]]
-editor/display_folded = true
 position = Vector2( 0, -10 )
 collision_layer = 2
 collision_mask = 2
@@ -205,7 +27,6 @@ shape = SubResource( 1 )
 [node name="r" type="Area2D" parent="point" groups=[
 "spawn_point",
 ]]
-editor/display_folded = true
 position = Vector2( 10, 0 )
 collision_layer = 2
 collision_mask = 2
@@ -239,3 +60,76 @@ openingDirection = 4
 [node name="c" type="CollisionShape2D" parent="point/l"]
 shape = SubResource( 1 )
 
+[node name="right" type="Node2D" parent="."]
+position = Vector2( 4.5, 0 )
+
+[node name="door" type="Sprite" parent="right"]
+modulate = Color( 0.592157, 0.592157, 0.592157, 1 )
+scale = Vector2( 1, 4 )
+texture = ExtResource( 2 )
+
+[node name="p2" type="Sprite" parent="right"]
+position = Vector2( 0, -3.5 )
+scale = Vector2( 1, 3 )
+texture = ExtResource( 2 )
+
+[node name="p3" type="Sprite" parent="right"]
+position = Vector2( 0, 3.5 )
+scale = Vector2( 1, 3 )
+texture = ExtResource( 2 )
+
+[node name="left" type="Node2D" parent="."]
+position = Vector2( -4.5, 0 )
+
+[node name="door" type="Sprite" parent="left"]
+modulate = Color( 0.592157, 0.592157, 0.592157, 1 )
+scale = Vector2( 1, 4 )
+texture = ExtResource( 2 )
+
+[node name="p2" type="Sprite" parent="left"]
+position = Vector2( 0, -3.5 )
+scale = Vector2( 1, 3 )
+texture = ExtResource( 2 )
+
+[node name="p3" type="Sprite" parent="left"]
+position = Vector2( 0, 3.5 )
+scale = Vector2( 1, 3 )
+texture = ExtResource( 2 )
+
+[node name="up" type="Node2D" parent="."]
+position = Vector2( 0, -4.5 )
+rotation = 1.5708
+
+[node name="door" type="Sprite" parent="up"]
+modulate = Color( 0.592157, 0.592157, 0.592157, 1 )
+scale = Vector2( 1, 4 )
+texture = ExtResource( 2 )
+
+[node name="p2" type="Sprite" parent="up"]
+position = Vector2( 0, -3.5 )
+scale = Vector2( 1, 3 )
+texture = ExtResource( 2 )
+
+[node name="p3" type="Sprite" parent="up"]
+position = Vector2( 0, 3.5 )
+scale = Vector2( 1, 3 )
+texture = ExtResource( 2 )
+
+[node name="down" type="Node2D" parent="."]
+position = Vector2( 0, 4.5 )
+rotation = 1.5708
+
+[node name="door" type="Sprite" parent="down"]
+modulate = Color( 0.592157, 0.592157, 0.592157, 1 )
+scale = Vector2( 1, 4 )
+texture = ExtResource( 2 )
+
+[node name="p2" type="Sprite" parent="down"]
+position = Vector2( 0, -3.5 )
+scale = Vector2( 1, 3 )
+texture = ExtResource( 2 )
+
+[node name="p3" type="Sprite" parent="down"]
+position = Vector2( 0, 3.5 )
+scale = Vector2( 1, 3 )
+texture = ExtResource( 2 )

@@ -3,60 +3,53 @@ class_name PartRoom
 
 export var right := false setget set_right
 export var left := false setget set_left
-export var top := false setget set_top
-export var bottom := false setget set_bottom
+export var up := false setget set_up
+export var down := false setget set_down
 
 
-onready var r = $door/r
-onready var l = $door/l
-onready var t = $door/t
-onready var b = $door/b
+onready var r = $right/door
+onready var l = $left/door
+onready var u = $up/door
+onready var d = $down/door
 
 
 onready var pr = $point/r/c
 onready var pl = $point/l/c
-onready var pt = $point/t/c
-onready var pb = $point/b/c
+onready var pu = $point/t/c
+onready var pd = $point/b/c
 
 
 func set_right(value:bool):
 	right = value
 	
-	yield(self, "ready")
-	
-	r.visible = !value
-	pr.disabled = !value
-	pr.get_parent().visible = value
+	set_setting(r, pr, value)
 
 func set_left(value:bool):
 	left = value
 	
-	yield(self, "ready")
-	
-	l.visible = !value
-	pl.disabled = !value
-	pl.get_parent().visible = value
+	set_setting(l, pl, value)
 
-func set_top(value:bool):
-	top = value
+func set_up(value:bool):
+	up = value
 	
-	yield(self, "ready")
-	
-	t.visible = !value
-	pt.disabled = !value
-	pt.get_parent().visible = value
+	set_setting(u, pu, value)
 
-func set_bottom(value:bool):
-	bottom = value
+func set_down(value:bool):
+	down = value
 	
-	yield(self, "ready")
-	
-	b.visible = !value
-	pb.disabled = !value
-	pb.get_parent().visible = value
+	set_setting(d, pd, value)
 
-func init(t, r, b, l):
-	self.top = t
+func init(r, d, l, u):
 	self.right = r
-	self.bottom = b
+	self.down = d
 	self.left = l
+	self.up = u
+
+
+func set_setting(door, point, value):
+	yield(self, "ready")
+	
+	door.visible = !value
+	point.disabled = !value
+	point.get_parent().visible = value
+
